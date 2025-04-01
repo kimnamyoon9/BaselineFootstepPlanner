@@ -355,10 +355,12 @@ void FootstepEnv::setupDijkstraPathHeuristic()
 
 bool FootstepEnv::checkRectCollision(double cx, double cy, const Rect & rect_obst) const
 {
+  double safety_margin_ = 0.15;
   double x_center = rect_obst.x_center;
   double y_center = rect_obst.y_center;
-  double x_half_length = rect_obst.x_half_length;
-  double y_half_length = rect_obst.y_half_length;
+  double x_half_length = rect_obst.x_half_length + safety_margin_;
+  double y_half_length = rect_obst.y_half_length + safety_margin_;
+
   return (x_center - x_half_length <= cx) && (cx <= x_center + x_half_length) && (y_center - y_half_length <= cy)
          && (cy <= y_center + y_half_length);
 }

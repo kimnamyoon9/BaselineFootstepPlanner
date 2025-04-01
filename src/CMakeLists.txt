@@ -26,7 +26,8 @@ target_include_directories(BaselineFootstepPlanner PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
-target_link_libraries(BaselineFootstepPlanner PUBLIC PkgConfig::SBPL)
+
+target_link_libraries(BaselineFootstepPlanner PRIVATE sbpl)
 target_compile_features(BaselineFootstepPlanner PUBLIC cxx_std_17)
 
 if(BUILD_SHARED_LIBS)

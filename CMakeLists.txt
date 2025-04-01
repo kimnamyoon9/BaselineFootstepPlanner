@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.19)
 
 set(PROJECT_NAME baseline_footstep_planner)
 set(PROJECT_GENERATED_HEADERS_SKIP_DEPRECATED ON)
@@ -30,13 +30,16 @@ else()
 endif()
 
 # SBPL
-find_package(PkgConfig)
-pkg_check_modules(SBPL REQUIRED IMPORTED_TARGET sbpl)
-if(NOT DEFINED CATKIN_DEVEL_PREFIX)
-  set(PACKAGE_EXTRA_MACROS "${PACKAGE_EXTRA_MACROS}
-find_package(PkgConfig)
-pkg_check_modules(SBPL REQUIRED IMPORTED_TARGET sbpl)")
-endif()
+# 기존 system 설치된 sbpl을 찾는 방식은 주석 처리
+# find_package(PkgConfig)
+# pkg_check_modules(SBPL REQUIRED IMPORTED_TARGET sbpl)
+#if(NOT DEFINED CATKIN_DEVEL_PREFIX)
+#  set(PACKAGE_EXTRA_MACROS "${PACKAGE_EXTRA_MACROS}
+#find_package(PkgConfig)
+#pkg_check_modules(SBPL REQUIRED IMPORTED_TARGET sbpl)")
+#endif()
+
+add_subdirectory(sbpl)  # sbpl 디렉토리를 추가
 
 if(DEFINED CATKIN_DEVEL_PREFIX)
   add_message_files(

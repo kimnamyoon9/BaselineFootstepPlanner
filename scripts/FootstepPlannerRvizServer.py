@@ -70,7 +70,7 @@ class FootstepPlannerRvizServer(object):
         self.im_server.insert(
             self._makeInteractiveMarkerSe2(
                 name="goal",
-                pose_2d=[2.0, 1.5, 0.0],
+                pose_2d=[2.0, 5.0, 0.0],
                 markers=copy.copy(self.both_foot_markers)),
             self.interactivemarkerFeedback)
 
